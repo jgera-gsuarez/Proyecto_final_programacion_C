@@ -1,0 +1,13 @@
+FILE *gnuplot = popen("gnuplot -persistent", "w");
+if (gnuplot) {
+    fprintf(gnuplot, "set datafile separator ','\n");
+    fprintf(gnuplot, "set title 'Decaimiento Exponencial'\n");
+    fprintf(gnuplot, "set xlabel 'Tiempo'\n");
+    fprintf(gnuplot, "set ylabel 'Masa'\n");
+    fprintf(gnuplot, "set grid\n");
+    fprintf(gnuplot, "plot 'simulacion.csv' using 1:2 with lines title 'Ambiente cálido', \\\n");
+    fprintf(gnuplot, "     'simulacion.csv' using 1:3 with lines title 'Ambiente frío'\n");
+    pclose(gnuplot);
+} else {
+    printf(\"Error al abrir GNUplot.\n\");
+}
