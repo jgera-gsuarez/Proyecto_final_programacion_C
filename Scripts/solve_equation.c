@@ -84,8 +84,8 @@ int main() {
         printf("Tiempo: %.2lf\tCalido: %.6lf\tFrio: %.6lf\n", tiempo, M_calido, M_frio);
 
         // Método de Euler
-        M_calido = M_calido - promedio_calido * M_calido * dt;
-        M_frio = M_frio - promedio_frio * M_frio * dt;
+        M_calido = M_calido + promedio_calido * M_calido * dt;
+        M_frio = M_frio + promedio_frio * M_frio * dt;
     }
 
     fclose(archivo);
