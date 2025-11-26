@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Introducción}{2}{chapter*.2}%
+\contentsline {section}{Objetivo General}{2}{section*.3}%
+\contentsline {section}{Objetivos Específicos}{2}{section*.4}%
+\contentsline {section}{Alcance del proyecto}{2}{section*.5}%
+\contentsline {chapter}{Desarrollo del proyecto}{3}{chapter*.6}%
+\contentsline {section}{Fragmento de código con comentarios}{3}{section*.7}%
+\contentsline {section}{Resultados obtenidos}{3}{section*.8}%
+\contentsline {chapter}{Conclusiones}{4}{chapter*.9}%
+\contentsline {section}{Bibliografía}{5}{chapter*.10}%

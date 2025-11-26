@@ -1,15 +1,48 @@
-### Proyecto final de la materia de programación del 3er semstre de Mecatrónica
-Como parte de las actividades del curso se realizaron muchos programas cortos de ejemplo el ilustrativos con el fin de aprender los comandos, la sintáxis y la lógica que se sigue para programar en lenguaje C.
+# Proyecto Final en C con Cairo
 
-Ahora es tiempo de poner a pueba lo aprendido a lo largo del curso. Es por esto que tenemos la tarea de realizar un proyecto final.
+Este proyecto está escrito en C y utiliza la librería **Cairo** para gráficos. A continuación se detallan los pasos para compilarlo en **Windows**.
 
-#### ¿Cuál es el problema a resolver?
-El proyecto se trabajará de forma interdisciplinar. El reto es resolver una problemática presente en alguno de los otros cursos que estamos tomando este semestre.
+## ✅ Requisitos
+- [MinGW-w64](https://www.mingw-w64.org/downloads/)
+- [Cairo para Windows (MSYS2)](https://www.msys2.org/) o [GTK Runtime](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
 
-Hemos elegido la asignatura de Ecuaciones Diferenciales. En este curso tenemos como proyecto final encontrar la constante de descomposición de cierta materia orgánica escogida arbitrariamente. Esto se realiza primero con una parte experimental que consiste en colocar 6 vasos con tierra y otros elementos además de la materia orgánica en un lugar fresco, seco y ventilado; y otros 6 vasos iguales en un lugar tibio, seco y ventilado. En cada par de vasos iguales se deberán colocar cucharadas de la materia orgánica estudiar inciando con una cucharada y hasta las 6 para el último par de vasos. Se tiene que agregar agua a los vasos cada tercer día.
-Obervaremos el comportamiento de los vasos a lo largo del tiempo y cuado ya no haya materia orgánica en cada vaso, registraremos cuantos días tardó en desaparecer.
+Es recomendable usar MSYS2 para instalar Mingw-w64 y Cairo.
+Para hacerlo abre una ventana de terminal de MSYS2.
+1.  Sincroniza e instala paquetes, actualiza la base de datos de paquetes(descarga la lista mas reciente), actualiza todos los paquetes instalados a sus últimas versiones.
+```
+pacman -Syu
+```
 
-#### Para el funcionamiento del programa.
-El programa que realizaremos se encargará de resolver la ecuación diferencial que describe el comportamiento de la descomposición en un tiempo dado. 
-Los datos de entrada que el programa recibe es la cantidad de materia(M) en un tiempo específico(t).
-La salida es la constante(k) de descomposición de esa materia orgánica.
+2. Actualiza los paquetes del sistema a la version mas reciente.
+```
+pacman -Su
+```
+
+3. Instala MingW-w64
+```
+pacman -S mingw-w64-x86_64-gcc
+```
+
+4. Instala Cairo
+```
+pacman -S mingw-w64-x86_64-cairo
+```
+
+## ✅ Pasos para compilar
+1. Abre la terminal **CMD** en la carpeta del proyecto.
+2. Ejecuta el script `compile.bat` (incluido en este repositorio).
+
+## ✅ Comando manual
+Si prefieres compilar manualmente:
+1. Abre la terminal **MSYSM2 MingW-w64**.
+2. Ve a la carpeta de tu proyecto.
+```
+cd /c/ruta/a/tu/proyecto
+```
+3. Compila con gcc
+```
+gcc *.c -o programa.exe -lcairo
+```
+4. Ejecuta el programa
+```
+./programa.exe

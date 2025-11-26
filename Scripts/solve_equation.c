@@ -1,9 +1,24 @@
 //José Gerardo González Suárez y Alizon Pamela Lagos Tlahuice.
 
+//Para Windows
+#ifdef _WIN32
+    #include <direct.h>   // Para _mkdir en Windows
+#else
+    #include <sys/stat.h> // Para mkdir en Linux/macOS
+    #include <sys/types.h>
+#endif
+
+#include <errno.h>
+#include <string.h>
+
+//Para Linux y macOS
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include <stdio.h>
 #include <math.h>
+#include "app.h"
 
-int main() {
     int i;
     double M0, Mf, t_final;
     double k_calido[6], k_frio[6];
@@ -12,6 +27,7 @@ int main() {
     double M;
     FILE *archivo;
 
+void calcular() {
     // Calculo de k para ambiente cálido
     printf("=== Ambiente cálido ===\n");
     for (i = 0; i < 6; i++) {
@@ -50,8 +66,6 @@ int main() {
         } while(Mf <= 0);
         printf("Ingrese tiempo total (t): ");
         scanf("%lf", &t_final);
-        printf("Ingrese tiempo total (t): ");
-        scanf("%lf", &t_final);
 
         k_frio[i] = (1.0 / t_final) * log(Mf / M0);
         promedio_frio += k_frio[i];
@@ -65,7 +79,10 @@ int main() {
     printf("\nPromedio k cálido: %lf\n", promedio_calido);
     printf("Promedio k frío: %lf\n", promedio_frio);
 
-    // Simulación con Euler usando promedio cálido y frío
+}
+
+void simular() {
+// Simulación con formula analítca que se obtiene de resolver la ec dif usando promedio cálido y frío
     printf("\nIngrese tiempo total de simulacion: ");
     scanf("%lf", &tiempo_total);
     printf("Ingrese paso de tiempo (dt): ");
@@ -73,22 +90,55 @@ int main() {
     printf("Ingrese masa inicial para simulacion: ");
     scanf("%lf", &M0);
 
-    archivo = fopen("simulacion.csv", "w");
+// Crear carpeta Resultados si no existe pra Windows
+#ifdef _WIN32
+    if (_mkdir("Resultados") == -1 && errno != EEXIST) {
+        printf("Error al crear carpeta Resultados: %s\n", strerror(errno));
+        return;
+    }
+#else
+    if (mkdir("Resultados", 0777) == -1 && errno != EEXIST) {
+        printf("Error al crear carpeta Resultados: %s\n", strerror(errno));
+        return;
+    }
+#endif
+
+// Crear carpeta Resultados si no existe para Linux y MacOS
+#ifdef _WIN32
+    if (_mkdir("Resultados") == -1) {
+        if (errno != EEXIST) {
+            printf("Error al crear carpeta Resultados: %s\n", strerror(errno));
+            return;
+        }
+    }
+#else
+    if (mkdir("Resultados", 0777) == -1) {
+        if (errno != EEXIST) {
+            printf("Error al crear carpeta Resultados: %s\n", strerror(errno));
+            return;
+        }
+    }
+#endif
+
+// Abrir archivo CSV
+    archivo = fopen("Resultados/simulacion.csv", "w");
+    if (!archivo) {
+        printf("Error al abrir archivo simulacion.csv: %s\n", strerror(errno));
+        return;
+    }
     fprintf(archivo, "Tiempo,Masa_Calido,Masa_Frio\n");
 
-    double M_calido = M0;
-    double M_frio = M0;
-
     for (double tiempo = 0; tiempo <= tiempo_total; tiempo += dt) {
-        fprintf(archivo, "%.2lf,%.6lf,%.6lf\n", tiempo, M_calido, M_frio);
-        printf("Tiempo: %.2lf\tCalido: %.6lf\tFrio: %.6lf\n", tiempo, M_calido, M_frio);
 
-        // Método de Euler
-        M_calido = M_calido + promedio_calido * M_calido * dt;
-        M_frio = M_frio + promedio_frio * M_frio * dt;
+        // Método analitico
+        double M_calido = M0 * exp(promedio_calido*tiempo);
+        double M_frio = M0 * exp(promedio_frio*tiempo);
+
+		fprintf(archivo, "%.2lf,%.6lf,%.6lf\n", tiempo, M_calido, M_frio);
+        printf("Tiempo: %.2lf\tCalido: %.6lf\tFrio: %.6lf\n", tiempo, M_calido, M_frio);
     }
 
     fclose(archivo);
     printf("\nDatos guardados en simulacion.csv\n");
-    return 0;
+    return ;
 }
