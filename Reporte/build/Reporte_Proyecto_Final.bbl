@@ -1,0 +1,293 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{corcuera_sf}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=02d655befb0a8fb7de508d4137769c67}{%
+           family={Corcuera},
+           familyi={C\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{fullhash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{fullhashraw}{02d655befb0a8fb7de508d4137769c67}
+      \strng{bibnamehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authorbibnamehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authornamehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authorfullhash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authorfullhashraw}{02d655befb0a8fb7de508d4137769c67}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Programación en Lenguaje C}
+      \field{year}{n.d.}
+      \verb{urlraw}
+      \verb https://personales.unican.es/corcuerp/progcomp/
+      \endverb
+      \verb{url}
+      \verb https://personales.unican.es/corcuerp/progcomp/
+      \endverb
+    \endentry
+    \entry{logica_sf}{misc}{}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{title}{Lógica de programación}
+      \field{year}{n.d.}
+      \verb{urlraw}
+      \verb https://montealegreluis.com/logica-programacion/docs/lenguaje-c.html
+      \endverb
+      \verb{url}
+      \verb https://montealegreluis.com/logica-programacion/docs/lenguaje-c.html
+      \endverb
+    \endentry
+    \entry{ricci_sf}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b13e223754aa4e3a48073acac537b09d}{%
+           family={Ricci},
+           familyi={R\bibinitperiod},
+           given={T.\bibnamedelimi I.\bibnamedelimi A.},
+           giveni={T\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8d318f554bd9f1d76a4d3c2d16a39ef7}{%
+           family={Cervantes},
+           familyi={C\bibinitperiod},
+           given={M.\bibnamedelimi A.\bibnamedelimi N.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{fullhash}{72a90aff0c34385027188fc32943edcb}
+      \strng{fullhashraw}{72a90aff0c34385027188fc32943edcb}
+      \strng{bibnamehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authorbibnamehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authornamehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authorfullhash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authorfullhashraw}{72a90aff0c34385027188fc32943edcb}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Entorno de Programación}
+      \field{year}{n.d.}
+      \verb{urlraw}
+      \verb https://repositorio-uapa.cuaed.unam.mx/repositorio/moodle/pluginfile.php/3077/mod_resource/content/1/UAPA-Entorno-Programacion-Lenguaje-C/index.html
+      \endverb
+      \verb{url}
+      \verb https://repositorio-uapa.cuaed.unam.mx/repositorio/moodle/pluginfile.php/3077/mod_resource/content/1/UAPA-Entorno-Programacion-Lenguaje-C/index.html
+      \endverb
+    \endentry
+    \entry{val2018}{misc}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=81b3fa385838f502f2595d229e0f6768}{%
+           family={Val},
+           familyi={V\bibinitperiod},
+           given={P.\bibnamedelimi B.},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9f36568b8d7b55745654d44f7c1407b7}{%
+           family={Ayres},
+           familyi={A\bibinitperiod},
+           given={I.\bibnamedelimi E.},
+           giveni={I\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c3180e6b2fb81063548e92f97e188015}{%
+           family={Pardo},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e85a02a1df24e4793e7763ae91826851}
+      \strng{fullhash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{fullhashraw}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{bibnamehash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{authorbibnamehash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{authornamehash}{e85a02a1df24e4793e7763ae91826851}
+      \strng{authorfullhash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{authorfullhashraw}{cf0c485e4c388e5059ce143fe1d2921c}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{title}{Capítulo 1. Estructura de un programa en C}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.it.uc3m.es/pbasanta/asng/course_notes/program_structure_es.html
+      \endverb
+      \verb{url}
+      \verb https://www.it.uc3m.es/pbasanta/asng/course_notes/program_structure_es.html
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{corcuera_sf}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=02d655befb0a8fb7de508d4137769c67}{%
+           family={Corcuera},
+           familyi={C\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{fullhash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{fullhashraw}{02d655befb0a8fb7de508d4137769c67}
+      \strng{bibnamehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authorbibnamehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authornamehash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authorfullhash}{02d655befb0a8fb7de508d4137769c67}
+      \strng{authorfullhashraw}{02d655befb0a8fb7de508d4137769c67}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Programación en Lenguaje C}
+      \field{year}{n.d.}
+      \verb{urlraw}
+      \verb https://personales.unican.es/corcuerp/progcomp/
+      \endverb
+      \verb{url}
+      \verb https://personales.unican.es/corcuerp/progcomp/
+      \endverb
+    \endentry
+    \entry{logica_sf}{misc}{}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{title}{Lógica de programación}
+      \field{year}{n.d.}
+      \verb{urlraw}
+      \verb https://montealegreluis.com/logica-programacion/docs/lenguaje-c.html
+      \endverb
+      \verb{url}
+      \verb https://montealegreluis.com/logica-programacion/docs/lenguaje-c.html
+      \endverb
+    \endentry
+    \entry{ricci_sf}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b13e223754aa4e3a48073acac537b09d}{%
+           family={Ricci},
+           familyi={R\bibinitperiod},
+           given={T.\bibnamedelimi I.\bibnamedelimi A.},
+           giveni={T\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8d318f554bd9f1d76a4d3c2d16a39ef7}{%
+           family={Cervantes},
+           familyi={C\bibinitperiod},
+           given={M.\bibnamedelimi A.\bibnamedelimi N.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{fullhash}{72a90aff0c34385027188fc32943edcb}
+      \strng{fullhashraw}{72a90aff0c34385027188fc32943edcb}
+      \strng{bibnamehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authorbibnamehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authornamehash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authorfullhash}{72a90aff0c34385027188fc32943edcb}
+      \strng{authorfullhashraw}{72a90aff0c34385027188fc32943edcb}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Entorno de Programación}
+      \field{year}{n.d.}
+      \verb{urlraw}
+      \verb https://repositorio-uapa.cuaed.unam.mx/repositorio/moodle/pluginfile.php/3077/mod_resource/content/1/UAPA-Entorno-Programacion-Lenguaje-C/index.html
+      \endverb
+      \verb{url}
+      \verb https://repositorio-uapa.cuaed.unam.mx/repositorio/moodle/pluginfile.php/3077/mod_resource/content/1/UAPA-Entorno-Programacion-Lenguaje-C/index.html
+      \endverb
+    \endentry
+    \entry{val2018}{misc}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=81b3fa385838f502f2595d229e0f6768}{%
+           family={Val},
+           familyi={V\bibinitperiod},
+           given={P.\bibnamedelimi B.},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9f36568b8d7b55745654d44f7c1407b7}{%
+           family={Ayres},
+           familyi={A\bibinitperiod},
+           given={I.\bibnamedelimi E.},
+           giveni={I\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c3180e6b2fb81063548e92f97e188015}{%
+           family={Pardo},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e85a02a1df24e4793e7763ae91826851}
+      \strng{fullhash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{fullhashraw}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{bibnamehash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{authorbibnamehash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{authornamehash}{e85a02a1df24e4793e7763ae91826851}
+      \strng{authorfullhash}{cf0c485e4c388e5059ce143fe1d2921c}
+      \strng{authorfullhashraw}{cf0c485e4c388e5059ce143fe1d2921c}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{title}{Capítulo 1. Estructura de un programa en C}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.it.uc3m.es/pbasanta/asng/course_notes/program_structure_es.html
+      \endverb
+      \verb{url}
+      \verb https://www.it.uc3m.es/pbasanta/asng/course_notes/program_structure_es.html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
