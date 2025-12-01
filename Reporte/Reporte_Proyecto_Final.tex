@@ -1,0 +1,555 @@
+\documentclass[12pt]{report}
+
+\usepackage[spanish]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage[style=apa, backend=biber]{biblatex}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\addbibresource{Referencias.bib}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{hyperref}
+
+\title{Proyecto Final - Programación en C}
+\author{José Gerardo González Suárez, Alizon Pamela Lagos Tlahuice}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+	El proyecto surge de la necesidad de ayudarnos a realizar los cálculos de un
+	proyecto de la materia de Ecuaciones Diferenciales. El proyecto en el que basamos nuestra solucion consiste en realizar composta bajo dos condiciones
+	de temperatura. Se realiza en 6 vasos para cada ambiente, cada uno diferente cantidad de materia orgánica. Durante una cantidad de días que no se conoce
+	se va registrar el comportamiento de la composta en cada vaso. Se registrará el día en el que se deja de observar materia orgánica en cada vaso para poder
+	obtener la constante de descomposición de la materia orgánica en cada ambiente. Aquí es en donde nuestra solución entra en acción ya que se encarga de procesar
+	los datos recabados y obtenern las constantes de descomposición para cada ambiente.
+\section*{Objetivo General}
+\addcontentsline{toc}{section}{Objetivo General}
+	Desarrollar un software funcional en C que permita dar solución a un problema planteado en una de las asginaturas que cursamos, reforzando las competencias de
+	programación y aplicando conceptos del ámbito mecatrónico. Se busca que el estudiante haga uso el conocimiento adquirido, el pensamiento lógico y la creatividad
+	para proponer una solución eficiente y efectiva.
+
+\section*{Objetivos Específicos}
+\addcontentsline{toc}{section}{Objetivos Específicos}
+	Se busca que el alumno aplique los siguientes conceptos aprendidos durante el curso:
+	\begin{itemize}
+		\item Estructura secuencial
+		\item Estructura condicional: if, switch
+		\item Estructuras cíclicas: for, while, do...while
+		\item Estructura de datos: arreglos
+		\item Funciones
+		\item Cadenas de caracteres
+		\item Estructuras
+		\item Uniones
+		\item Manejo de archivos(lectura/escritura)
+		\item Graficación básica(ASCII o con librería)
+	\end{itemize}
+
+\section*{Alcance del proyecto}
+\addcontentsline{toc}{section}{Alcance del proyecto}
+	El proyecto consiste en el desarrollo de una aplicación de consola para calcular las constantes de descomposición k en un sistema de composta. Además, permitirá
+	establecer condiciones iniciales distintas a las utilizadas físicamente, con el fin de simular el comportamiento del sistema bajo factores diferentes a los
+	explorados. El programa será capaz de registrar los datos en un archivo .CSV, leerlos posteriormente y generar gráficas cuando sea requerido. Dichas gráficas
+	se guardarán en formato .png junto con el archivo de datos en una carpeta de resultados creada por la aplicación. Para lograr esto, se implementarán
+	funcionalidades de lectura y escritura de datos proporcionados por el usuario, manejo de archivos, operaciones matemáticas, graficación básica y control de las
+	operaciones del sistema. Se contempla la portabilidad de la solución, permitiendo su ejecución en sistemas Windows, Mac y Linux.
+	La solución se desarrollará en el lenguaje C, utilizando librerías estándar y algunas librerías externas para la graficación y manejo de errores.
+	
+	No se contempla la creación de una aplicación móvil ni el uso de software avanzado de graficación. El alcance se limita a la funcionalidad básica, la interfaz de consola y los archivos generados por el programa.
+	Por otro lado, la estructira del código está pensada de forma que partes de él puedan ser utilizadas en proyectos posteriores.
+
+\chapter*{Desarrollo del proyecto}
+\addcontentsline{toc}{chapter}{Desarrollo del proyecto}
+Iniciamos con la identifiacion del problema, posterior a eso se hizo el análisis de la posible solución.
+Era claro que se debían calcular las constantes k para cada vaso, así que primero se solicitan los valores con los que se va a calcular k. 
+Posteriormente, las constantes se promedian y se escribe en pantalla el promedio para ambiente caliente y el promedio para ambiente frío. Después, se pide ingresar
+datos para la simulación, es en esta parte en donde puedes saber como se va a comportar la materia orgánica en más días de los que hiciste físicmamente.
+Los datos de la simulación son guardados en un archivo .CSV que a su vez se guarda en una carpeta de resultados que el programa crea en caso de que no exista o 
+guarda en ella los datos si es que ya existe. La última cosa que hace el programa es leer los datos del archivo .CSV y poner en una gráfica en la que podemos ver
+tanto el comportamiento de la materia en el ambiente cálido como el frío y comparar.
+
+Estos procesos que realiza el programa están divididos en un menú de 3 opciones. La opción 1 es para calcular k y simular, la opción 2 es para graficar y la opción
+3 es para salir del programa. Cuando termina el proceso 1 o 2, el programa lo notifica con un mensaje de éxito o de error si lo hubiera y regres al menú para poder
+seleccionar otra opción. El programa está dividido en 4 archivos, de esta forma el código es más digerible y algunas funcionalidades de pueden reutiliar en otro
+proyecto. Los archivos usados son app.h, main.c, solve\_equation.c y graficar.c. En la siguiente sección se explicara la función de cada archivo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.33\linewidth]{Logicageneral.png}
+	\caption{\label{fig:3}Lógica general del programa.}
+\end{figure}
+
+\section*{Fragmentos de código con comentarios}
+\addcontentsline{toc}{section}{Fragmento de código con comentarios}
+
+\subsection*{APP.h}
+\addcontentsline{toc}{subsection}{APP.h}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single
+}
+
+\begin{lstlisting}
+	// -- Header File --
+#ifndef APP_H //Si no esta definido APP_H
+#define APP_H //Define APP_H
+
+void calcular(); //Declaramos funcion para calcular k
+void simular();  //Declaramos funcion que hara la simualcion
+void graficar(const char*input_csv const char*output_png);
+//Definimos funcion para graficar
+
+#endif
+\end{lstlisting}
+Este es el primer archivo que se crea, es un archivo de encabezado (header file) en el que se implementa un include guard que evita que el archivo se incluya mas
+de una vez en la compilación. Además, se declaran las funciones que usará nuestro proyecto.
+\subsection*{main.c}
+\addcontentsline{toc}{subsection}{main.c}
+\begin{lstlisting}
+#include <stdio.h>
+#include "app.h"
+int main() {
+    int opcion;
+    do
+    {
+        printf("\n=== Aplicacion Decaimiento Exponencial ===\n");
+        printf("1. Calcular y simular\n");
+        printf("2. Graficar datos\n");
+        printf("3. Salir\n");
+        printf("Seleccione una opcion: ");
+        scanf("%d", &opcion);
+
+        switch(opcion) {
+            case 1:
+                calcular();
+				simular();
+                break;
+            case 2:
+                graficar_csv("Resultados/simulacion.csv",
+				"Resultados/grafica.png");
+                break;
+            case 3:
+                printf("Saliendo...\n");
+                break;
+            default:
+                printf("Opcion invalida.\n");
+        }
+    } while(opcion != 3);
+
+    return 0;
+}
+\end{lstlisting}
+En este archivo se encuentra la función main que es el menú para elegir que queremos realizar. Se hace uso del ciclo
+do...while además de switch para las opciones del menú.
+\subsection*{solve\_equation.c}
+\addcontentsline{toc}{subsection}{solve\_equation.c}
+\begin{lstlisting}
+//Para Windows
+#ifdef _WIN32
+    #include <direct.h>   // Para _mkdir en Windows
+#else
+    #include <sys/stat.h> // Para mkdir en Linux/macOS
+    #include <sys/types.h>
+#endif
+
+#include <errno.h>
+#include <string.h>
+
+//Para Linux y macOS
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#include <stdio.h>
+#include <math.h>
+#include "app.h"
+}
+\end{lstlisting}
+Este es el comienzo del archivo solve\_equation.c, en él se llaman las librerías necesarias para ejecutar el programa. Podemos notar que hay dos opciones de
+librerías, esto es para utilizar las librerías necesarias según el sistema operativo en el que se esté ejecutando el programa.
+\\
+\begin{lstlisting}
+	int i;
+    double M0, Mf, t_final;
+	//Declaramos variables para Masa inicial, Masa final y
+	//tiempo final
+    double k_calido[6], k_frio[6];
+	//Declaramos arreglos para giardar los valores de k en
+	//cada ambiente
+    double promedio_calido = 0.0, promedio_frio = 0.0,
+	promedio_global;
+    //Declaramos variables para guardar los promedios de k en
+	//cada ambiente
+	double tiempo_total, dt;
+	//Declaramos variables para el tiempo total de simualcion
+	//y el incremento del tiempo
+    double M;
+	//Declaramos variable para la masa total de simulacion
+    FILE *archivo;
+	//Declaramos puntero de archivo para manejar el .CSV
+\end{lstlisting}
+Declaramos variables de tipo double porque trabajaremos con números decimales pequeños de varios digitos 
+\\
+\begin{lstlisting}
+void calcular() {
+// Calculo de k para ambiente calido
+printf("=== Ambiente calido ===\n");
+for (i = 0; i < 6; i++) {
+	printf("\nVaso %d:\n", i + 1);
+	printf("Ingrese masa inicial (M0): ");
+	scanf("%lf", &M0);
+	do{
+		printf("Ingrese masa final (Mf): ");
+		scanf("%lf", &Mf);
+		if (Mf <= 0){
+			printf("Error: la masa final deber ser
+			mayor que 0\n");
+		}
+	} while(Mf <= 0);
+	printf("Ingrese tiempo total (t): ");
+	scanf("%lf", &t_final);
+
+	// Formula analitica para k
+	k_calido[i] = (1.0 / t_final) * log(Mf / M0);
+	promedio_calido += k_calido[i];
+	printf("k calculada: %lf\n", k_calido[i]);
+}
+promedio_calido /= 6.0;
+
+// Calculo de k para ambiente frio
+printf("\n=== Ambiente frio ===\n");
+for (i = 0; i < 6; i++) {
+	printf("\nVaso %d:\n", i + 1);
+	printf("Ingrese masa inicial (M0): ");
+	scanf("%lf", &M0);
+	do{
+		printf("Ingrese masa final (Mf): ");
+		scanf("%lf", &Mf);
+		//Commprobacion para que la masa final sea > 0
+		if (Mf <= 0){
+			printf("Error: la masa final debe ser
+			mayor que 0.\n");
+		}
+	} while(Mf <= 0);
+	printf("Ingrese tiempo total (t): ");
+	scanf("%lf", &t_final);
+
+	k_frio[i] = (1.0 / t_final) * log(Mf / M0);
+	promedio_frio += k_frio[i];
+	printf("k calculada: %lf\n", k_frio[i]);
+}
+promedio_frio /= 6.0;
+
+// Calculo del promedio global
+promedio_global = (promedio_calido + promedio_frio) / 2.0;
+
+printf("\nPromedio k calido: %lf\n", promedio_calido);
+printf("Promedio k frio: %lf\n", promedio_frio);
+
+}
+\end{lstlisting}
+En esta sección se encuentran los calculos de k para cada vaso así como el promedio de k para cada ambiente con un ciclo for. Además, se agregó una comprobación
+para quue la masa final ingresada sea mayor que 0 y evitar errores ya que no se puede calcular el logaritmo de cero o numeros negativos.
+\\
+\begin{lstlisting}
+void simular() {
+// Simulacion con formula analitca que se obtiene de resolver la
+//ec dif usando promedio calido y frio
+    printf("\nIngrese tiempo total de simulacion: ");
+    scanf("%lf", &tiempo_total);
+    printf("Ingrese paso de tiempo (dt): ");
+    scanf("%lf", &dt);
+    printf("Ingrese masa inicial para simulacion: ");
+    scanf("%lf", &M0);
+
+// Crear carpeta Resultados si no existe pra Windows
+#ifdef _WIN32
+    if (_mkdir("Resultados") == -1 && errno != EEXIST) {
+        printf("Error al crear carpeta Resultados: %s\n",
+		strerror(errno));
+        return;
+    }
+#else
+    if (mkdir("Resultados", 0777) == -1 && errno != EEXIST) {
+        printf("Error al crear carpeta Resultados: %s\n",
+		strerror(errno));
+        return;
+    }
+#endif
+
+// Crear carpeta Resultados si no existe para Linux y MacOS
+#ifdef _WIN32
+    if (_mkdir("Resultados") == -1) {
+        if (errno != EEXIST) {
+            printf("Error al crear carpeta Resultados: %s\n",
+			strerror(errno));
+            return;
+        }
+    }
+#else
+    if (mkdir("Resultados", 0777) == -1) {
+        if (errno != EEXIST) {
+            printf("Error al crear carpeta Resultados: %s\n",
+			strerror(errno));
+            return;
+        }
+    }
+#endif
+
+// Abrir archivo CSV
+    archivo = fopen("Resultados/simulacion.csv", "w");
+    if (!archivo) {
+        printf("Error al abrir archivo simulacion.csv: %s\n",
+		strerror(errno));
+        return;
+    }
+    fprintf(archivo, "Tiempo,Masa_Calido,Masa_Frio\n");
+
+    for (double tiempo = 0; tiempo <= tiempo_total;
+	tiempo += dt) {
+
+        // Metodo analitico
+        double M_calido = M0 * exp(promedio_calido*tiempo);
+        double M_frio = M0 * exp(promedio_frio*tiempo);
+
+		fprintf(archivo, "%.2lf,%.6lf,%.6lf\n", tiempo,
+		M_calido, M_frio);
+        printf("Tiempo: %.2lf\tCalido: %.6lf\tFrio: %.6lf\n",
+		tiempo, M_calido, M_frio);
+    }
+
+    fclose(archivo);
+    printf("\nDatos guardados en simulacion.csv\n");
+    return ;
+}	
+\end{lstlisting}
+En esta sección se realiza la simulación del comportamiento de la materia en ambos ambientes. Tambien se crea la carpeta de resultados, agregando una comprobación
+para evitar errores en caso de la carpeta ya exista. También, se agregaron dos opciones para crear la carpeta dependiendo del sistema operativo en el que se ejecute.
+\\
+\\
+\subsection*{graficacion.c}
+\addcontentsline{toc}{subsection}{graficacion.c}
+\begin{lstlisting}
+#include <cairo/cairo.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+
+#define WIDTH 800
+#define HEIGHT 600
+#define MARGIN 50
+
+void_graficar_csv(const char *input_csv,
+const char *output_png) {
+    FILE *archivo = fopen(input_csv, "r");
+    if (!archivo) {
+        fprintf(stderr, "Error al abrir %s: %s\n", input_csv,
+		strerror(errno));
+        return;
+    }
+
+    char linea[256];
+    int capacidad = 1000;
+    double *tiempo = malloc(capacidad * sizeof(double));
+    double *masa_calido = malloc(capacidad * sizeof(double));
+    double *masa_frio = malloc(capacidad * sizeof(double));
+    if (!tiempo || !masa_calido || !masa_frio) {
+        fprintf(stderr, "Error de memoria\n");
+        fclose(archivo);
+        return;
+    }
+
+    int n = 0;
+    fgets(linea, sizeof(linea), archivo); // Saltar encabezado
+    while (fgets(linea, sizeof(linea), archivo)) {
+        if (n >= capacidad) {
+            capacidad *= 2;
+            tiempo = realloc(tiempo, capacidad *
+			sizeof(double));
+            masa_calido = realloc(masa\_calido, capacidad *
+			sizeof(double));
+            masa_frio = realloc(masa\_frio, capacidad *
+			sizeof(double));
+        }
+        sscanf(linea, "%lf,%lf,%lf", &tiempo[n], &masa\_calido[n],
+		&masa_frio[n]);
+        n++;
+    }
+    fclose(archivo);
+
+    // Calcular maximos
+    double max_t = tiempo[n - 1];
+    double max_m = masa_calido[0];
+    for (int i = 0; i < n; i++) {
+        if (masa_calido[i] > max_m) max_m = masa_calido[i];
+        if (masa_frio[i] > max_m) max_m = masa_frio[i];
+    }
+    max_m *= 1.1; // margen extra
+
+    double scale_x = (WIDTH - 2 * MARGIN) / max_t;
+    double scale_y = (HEIGHT - 2 * MARGIN) / max_m;
+
+    cairo_surface_t *surface = cairo_image_surface_create(CAIRO_
+	FORMAT_ARGB32, WIDTH, HEIGHT);
+    cairo\_t *cr = cairo_create(surface);
+
+    if (cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS) {
+        fprintf(stderr, "Error creando superficie Cairo\n");
+        free(tiempo); free(masa_calido); free(masa_frio);
+        return;
+    }
+
+    // Fondo blanco
+    cairo_set_source_rgb(cr, 1, 1, 1);
+    cairo_paint(cr);
+
+    // Ejes
+    cairo_set_source_rgb(cr, 0, 0, 0);
+    cairo_set_line_width(cr, 2);
+    cairo_move_to(cr, MARGIN, HEIGHT - MARGIN);
+    cairo_line_to(cr, WIDTH - MARGIN, HEIGHT - MARGIN);
+    cairo_move_to(cr, MARGIN, HEIGHT - MARGIN);
+    cairo_line_to(cr, MARGIN, MARGIN);
+    cairo_stroke(cr);
+
+    // Etiquetas
+    cairo_select_font_face(cr, "Sans", CAIRO_FONT_SLANT_NORMAL,
+	CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size(cr, 14);
+    cairo_move_to(cr, WIDTH / 2, HEIGHT - 10);
+    cairo_show_text(cr, "Tiempo");
+    cairo_move_to(cr, 10, HEIGHT / 2);
+    cairo_show_text(cr, "Masa");
+
+    // Ticks en X
+    int ticks = 10;
+    for (int i = 0; i <= ticks; i++) {
+        double t = max_t * i / ticks;
+        double x = MARGIN + t * scale_x;
+        cairo_move_to(cr, x, HEIGHT - MARGIN);
+        cairo_line_to(cr, x, HEIGHT - MARGIN + 5);
+        cairo_stroke(cr);
+        char etiqueta[32];
+        snprintf(etiqueta, sizeof(etiqueta), "%.1f", t);
+        cairo_move_to(cr, x - 10, HEIGHT - MARGIN + 20);
+        cairo_show_text(cr, etiqueta);
+    }
+
+    // Ticks en Y
+    for (int i = 0; i <= ticks; i++) {
+        double m = max_m * i / ticks;
+        double y = HEIGHT - MARGIN - m * scale_y;
+        cairo_move_to(cr, MARGIN, y);
+        cairo_line_to(cr, MARGIN - 5, y);
+        cairo_stroke(cr);
+        char etiqueta[32];
+        snprintf(etiqueta, sizeof(etiqueta), "%.1f", m);
+        cairo_move_to(cr, 10, y + 5);
+        cairo_show_text(cr, etiqueta);
+    }
+
+    // Curva calido (rojo)
+    cairo_set_source_rgb(cr, 1, 0, 0);
+    cairo_set_line_width(cr, 2);
+    cairo_move_to(cr, MARGIN, HEIGHT - MARGIN
+	- masa_calido[0] * scale_y);
+    for (int i = 1; i < n; i++) {
+        cairo_line_to(cr, MARGIN + tiempo[i] * scale_x,
+		HEIGHT - MARGIN - masa_calido[i] * scale_y);
+    }
+    cairo_stroke(cr);
+
+    // Curva frio (azul)
+    cairo_set_source_rgb(cr, 0, 0, 1);
+    cairo_move_to(cr, MARGIN, HEIGHT - MARGIN - masa_frio[0] *
+	scale_y);
+    for (int i = 1; i < n; i++) {
+        cairo_line_to(cr, MARGIN + tiempo[i] * scale_x, HEIGHT
+		- MARGIN - masa_frio[i] * scale_y);
+    }
+    cairo_stroke(cr);
+
+    // Leyenda
+    cairo_set_source_rgb(cr, 0, 0, 0);
+    cairo_move_to(cr, WIDTH - 150, MARGIN);
+    cairo_show_text(cr, "Calido (rojo)");
+    cairo_move_to(cr, WIDTH - 150, MARGIN + 20);
+    cairo_show_text(cr, "Frio (azul)");
+
+    cairo_surface_write_to_png(surface, output_png);
+    cairo_destroy(cr);
+    cairo_surface_destroy(surface);
+
+    free(tiempo);
+    free(masa_calido);
+    free(masa_frio);
+
+    printf("Grafica exportada como %s\n", output_png);
+}
+
+void ejecutar_graficacion() {
+    graficar_csv("Resultados/simulacion.csv",
+	"Resultados/grafica.png");
+    return;
+}
+\end{lstlisting}
+Este archivo se encarga de graficar los datos guardados en el archivo .CSV. Se hace uso de la librería CAIRO para graficar
+y convertir a imagen .png. Para lograr ejecutarlo en otro equipo se debe instalar esta libraría. Se incluyeron
+instrucciones para hacerlos en Windows, MAC y Linux en el README del proyecto.
+\\
+\section*{Resultados obtenidos}
+\addcontentsline{toc}{section}{Resultados obtenidos}
+Los resultados que obtuvimos fueron satisfactorios, el programa realiza los cálculos correctamente y genera las gráficas
+esperadas. Es un programa además útil porque ayudo a agilizar los cálculos y la gráfica pare el proyecto de diferenciales.
+En un aspecto más técnico, el proeyecto representó un buen reto para aplicar y consolidar los conocimientos adquiridos, así
+como adquirir nuevos conocimientos y habilidades en el manejo de librerías y en la creación de soluciones. Aprendimos a
+llevar un flujo de desarrollo ordenado con archivos separadas y funciones lo que nos permitirá reutilizar partes del
+código en proyectos futuros. Hacerlo de esta forma también se facilita la lectura y comprensión del código. Se logró crear
+un proeycto portable capaz de ser utilizad en distintos equipos y sistemas operativos.
+
+\section*{Conclusiones}
+\addcontentsline{toc}{section}{Conclusiones}
+En conclusión, es evidente que la programación puede satisfacer diferentes disciplinas, usándose como una herramienta esencial en diversos ámbitos. En este caso
+particular, la aplicación del lenguaje de programación C resultó importante para agilizar los cálculos para el análisis de datos en el experimento de ecuaciones
+diferenciales.
+
+Es importante destacar que en el desarrollo se utilizaron metodologías de programación estructurada, lo que nos facilitó la organización del código. Esto es una
+buena práctica que se debe aplicar para el desarrollo de nuestros proyectos. 
+
+Se debe mencionar que fue un gran reto el desarrollo de esta solución sobre todo en la graficación y la portabilidad del proyecto, fue necesario investigar
+documentación y apoyarnos de Copilot como un revisor de código para lograrlo. Aunque suele ser controversial entre la comunidad de desarrolladores, consideramos que
+es una herramienta poderosa para ayudarnos con la detección y solución de errores, así como para aprender sobre nuevas tecnologías.
+
+
+Reconocemos el valor y dedicacion de este trabajo  como una base sobre la cual podemos construir nuevos conocimientos y abordar nuevos proyectos.
+
+\printbibliography
+\parencite{corcuera_sf}
+\textcite{val2018}
+\parencite{logica_sf}
+\textcite{val2018}
+\parencite{ricci_sf}
+\textcite{val2018}
+\parencite{val2018}
+\textcite{val2018}
+
+
+\end{document}

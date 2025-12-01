@@ -1,0 +1,54 @@
+Tecnologías y herramientas utilizadas
+
+Lenguajes, librerías, frameworks, entornos de desarrollo.
+Ejemplo: “Se utilizó C con librerías estándar y la librería X para graficación…”.
+
+
+
+Implementación
+
+Explica cómo se programaron las funcionalidades principales.
+Puedes incluir fragmentos de código relevantes (no todo el código).
+Ejemplo: “Para la lectura de archivos CSV se empleó la función fopen()…”.
+
+
+
+Pruebas y validación
+
+Cómo verificaste que el programa funciona correctamente.
+Ejemplo: “Se realizaron pruebas con datos simulados y se compararon los resultados…”.
+
+
+
+Problemas encontrados y soluciones
+
+Describe dificultades técnicas y cómo las resolviste.
+Ejemplo: “Se presentó un error en la lectura de archivos debido a… que se solucionó mediante…”.
+
+
+
+Resultados obtenidos
+
+Muestra ejemplos de salida del programa, gráficas generadas, archivos creados.
+
+
+
+
+Consejo
+Puedes dividir esta sección en subsecciones:
+
+Diseño del sistema
+Implementación
+Pruebas
+Resultados
+
+\section*{Fragmentos de código con comentarios}
+\addcontentsline{toc}{section}{Fragmento de código con comentarios}
+	Aquí va texto e imagenes
+
+\section*{Resultados obtenidos}
+\addcontentsline{toc}{section}{Resultados obtenidos}
+
+\chapter*{Conclusiones}
+\addcontentsline{toc}{chapter}{Conclusiones}
+	Aquí va texto
